@@ -9,22 +9,20 @@ import java.util.*
  */
 
 class FindItemsInteractorImpl : FindItemsInteractor {
+
+    private val items = Arrays.asList("Item 1", "Item 2", "Item 3", "Item 4", "Item 5")
+
     override fun findItems(listener: FindItemsInteractor.OnFinishedListener) {
-        Handler().postDelayed({ listener.onFinished(createArrayList()) }, 2000)
+        // ローディングを擬似的に2000ミリ秒出す
+        Handler().postDelayed({ listener.onFinished(items) }, 2000)
+    }
+}
+
+interface FindItemsInteractor {
+
+    interface OnFinishedListener {
+        fun onFinished(items: List<String>)
     }
 
-    private fun createArrayList(): List<String> {
-        return Arrays.asList(
-                "Item 1",
-                "Item 2",
-                "Item 3",
-                "Item 4",
-                "Item 5",
-                "Item 6",
-                "Item 7",
-                "Item 8",
-                "Item 9",
-                "Item 10"
-        )
-    }
+    fun findItems(listener: OnFinishedListener)
 }

@@ -19,7 +19,11 @@ class MainPresenterImpl(mainView: MainView, private val findItemsInteractor: Fin
     }
 
     override fun onItemClicked(position: Int) {
-        mainView?.showMessage(String.format("Position %d clicked", position + 1))
+        if (BuildConfig.DEBUG) {
+            mainView?.showMessage(String.format("Position %d", position + 1))
+        } else {
+            mainView?.showErrorMessage("Error")
+        }
     }
 
     override fun onDestroy() {
@@ -30,4 +34,26 @@ class MainPresenterImpl(mainView: MainView, private val findItemsInteractor: Fin
         mainView?.setItems(items)
         mainView?.hideProgress()
     }
+}
+
+interface MainPresenter {
+
+    fun onResume()
+
+    fun onItemClicked(position: Int)
+
+    fun onDestroy()
+}
+
+interface MainView {
+
+    fun showProgress()
+
+    fun hideProgress()
+
+    fun setItems(items: List<String>)
+
+    fun showMessage(message: String)
+
+    fun showErrorMessage(message: String)
 }
