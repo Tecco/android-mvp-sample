@@ -4,9 +4,10 @@ package com.tecc0.hoge1
  * Created by makoto_nishimoto on 2018/04/04.
  */
 
-class MainPresenterImpl(mainView: MainView, private val findItemsInteractor: FindItemsInteractor) : MainPresenter, FindItemsInteractor.OnFinishedListener {
+class MainPresenterImpl(mainView: MainView, private val findItemsInteractor: FindItemsInteractor)
+    : MainPresenter, FindItemsInteractor.OnFinishedListener {
 
-    private var mainView: MainView?
+    var mainView: MainView?
 
     init {
         this.mainView = mainView
