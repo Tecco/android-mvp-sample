@@ -6,8 +6,7 @@ package com.tecc0.hoge1
 
 class MainPresenterImpl(mainView: MainView, private val findItemsInteractor: FindItemsInteractor) : MainPresenter, FindItemsInteractor.OnFinishedListener {
 
-    var mainView: MainView? = null
-        private set
+    private var mainView: MainView?
 
     init {
         this.mainView = mainView
@@ -15,7 +14,7 @@ class MainPresenterImpl(mainView: MainView, private val findItemsInteractor: Fin
 
     override fun onResume() {
         mainView?.showProgress()
-        findItemsInteractor.findItems(this)
+        findItemsInteractor.setItems(this)
     }
 
     override fun onItemClicked(position: Int) {
