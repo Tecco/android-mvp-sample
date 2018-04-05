@@ -34,25 +34,3 @@ class MainPresenterImpl(mainView: MainView, private val findItemsInteractor: Fin
         mainView?.hideProgress()
     }
 }
-
-interface MainPresenter {
-
-    fun onResume()
-
-    fun onItemClicked(position: Int)
-
-    fun onDestroy()
-}
-
-interface MainView {
-
-    fun showProgress()
-
-    fun hideProgress()
-
-    fun setItems(items: List<String>)
-
-    fun showMessage(message: String)
-
-    fun showErrorMessage(message: String)
-}

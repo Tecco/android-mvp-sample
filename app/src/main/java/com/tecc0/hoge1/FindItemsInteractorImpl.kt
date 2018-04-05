@@ -17,12 +17,3 @@ class FindItemsInteractorImpl : FindItemsInteractor {
         Handler().postDelayed({ listener.onFinished(items) }, 2000)
     }
 }
-
-interface FindItemsInteractor {
-
-    interface OnFinishedListener {
-        fun onFinished(items: List<String>)
-    }
-
-    fun setItems(listener: OnFinishedListener)
-}
